@@ -11,9 +11,9 @@ if NOT exist .\Complex\Complex.exe (
     ECHO .\Complex\Complex
 )
 
-if NOT exist .\dynamic_array\dynamic_array.exe (
-    g++ .\dynamic_array\dynamic_array.cpp -std=c++11 -o .\dynamic_array\dynamic_array
-    ECHO .\dynamic_array\dynamic_array
+if NOT exist .\DArray\DArray.exe (
+    g++ .\DArray\main.cpp -std=c++11 -o .\DArray\DArray
+    ECHO .\DArray\DArray
 )
 
 if NOT exist .\ParenBalance\ParenBalance.exe (
@@ -31,5 +31,17 @@ if NOT exist .\Matrix\Matrix.exe (
     ECHO .\Matrix\Matrix
 )
 
+if NOT exist .\Ackerman\Ackerman.exe (
+    g++ .\Ackerman\main.cpp -std=c++11 -o .\Ackerman\Ackerman
+    ECHO .\Ackerman\Ackerman
+)
 
+if NOT exist .\RegulaFalsi\RegulaFalsi.exe (
+    g++ .\RegulaFalsi\main.cpp -std=c++11 -o .\RegulaFalsi\RegulaFalsi
+    ECHO .\RegulaFalsi\RegulaFalsi
+)
 
+if NOT exist .\NimsGame\NimsGame.exe (
+    g++ .\NimsGame\main.cpp -std=c++11 -o .\NimsGame\NimsGame
+    ECHO .\NimsGame\NimsGame
+)
