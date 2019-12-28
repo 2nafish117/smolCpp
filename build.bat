@@ -45,3 +45,8 @@ if NOT exist .\NimsGame\NimsGame.exe (
     g++ .\NimsGame\main.cpp -std=c++11 -o .\NimsGame\NimsGame
     ECHO .\NimsGame\NimsGame
 )
+
+if NOT exist .\Hanoi\Hanoi.exe (
+    g++ .\Hanoi\main.cpp -std=c++11 -o .\Hanoi\Hanoi
+    ECHO .\Hanoi\Hanoi
+)
