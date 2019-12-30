@@ -50,3 +50,8 @@ if NOT exist .\Hanoi\Hanoi.exe (
     g++ .\Hanoi\main.cpp -std=c++11 -o .\Hanoi\Hanoi
     ECHO .\Hanoi\Hanoi
 )
+
+if NOT exist .\NQueens\NQueens.exe (
+    g++ .\NQueens\main.cpp -std=c++11 -o .\NQueens\NQueens
+    ECHO .\NQueens\NQueens
+)
