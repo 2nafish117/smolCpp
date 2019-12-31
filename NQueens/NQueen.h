@@ -18,15 +18,7 @@
 #include <cstring>
 #include <algorithm>
 
-#ifndef BOARD_SIZE
-    #error "BOARD_SIZE needs to be defined"
-#endif
-
-#ifdef BOARD_SIZE
-
-static_assert(BOARD_SIZE > 0, "wtf u doin?");
-
-static bool _legal(char board[BOARD_SIZE][BOARD_SIZE], unsigned int row, unsigned int col)
+static bool _legal(char* board, unsigned int size, unsigned int row, unsigned int col)
 {
     // checking rows is redundant
     // check rows
@@ -38,64 +30,64 @@ static bool _legal(char board[BOARD_SIZE][BOARD_SIZE], unsigned int row, unsigne
     // check columns
     for(unsigned int r = 0;r < row;++r)
     {
-        if(board[r][col] == 'Q')
+        if(board[r * size + col] == 'Q')
             return false;
     }
     // check major diag
     int offset = std::min(row, col);
     for(int x = 1; x <= offset;++x)
     {
-        if(board[row - x][col - x] == 'Q')
+        if(board[(row - x) * size + col - x] == 'Q')
             return false;
     }
     // check minor diag
-    offset = std::min(row, BOARD_SIZE - col - 1);
+    offset = std::min(row, size - col - 1);
     for(int x = 1; x <= offset;++x)
     {
-        if(board[row - x][col + x] == 'Q')
+        if(board[(row - x) * size + col + x] == 'Q')
             return false;
     }
     return true;
 }
 
-static bool _n_queens(char board[BOARD_SIZE][BOARD_SIZE], int exclude_row)
+static bool _n_queens(char* board, unsigned int size, int exclude_row)
 {
-    if(exclude_row >= BOARD_SIZE)
+    if(exclude_row >= size)
         return true;
 
-    for(unsigned int c = 0;c < BOARD_SIZE;++c)
+    for(unsigned int c = 0;c < size;++c)
     {
-        board[exclude_row][c] = 'Q';
-        if(_legal(board, exclude_row, c))
+        board[exclude_row * size + c] = 'Q';
+        if(_legal(board, size, exclude_row, c))
         {
-            bool solution_exists = _n_queens(board, exclude_row + 1);
+            bool solution_exists = _n_queens(board, size, exclude_row + 1);
             if(!solution_exists)
-                board[exclude_row][c] = '_';
+                board[exclude_row * size + c] = '_';
             else
                 return true;
         }
         else
         {
-            board[exclude_row][c] = '_';
+            board[exclude_row * size + c] = '_';
         }
     }
     return false;
 }
 
-bool n_queens(char board[BOARD_SIZE][BOARD_SIZE])
+bool n_queens(char* board, unsigned int size)
 {
-    return _n_queens(board, 0);
+    assert(size > 0 && "size needs to be positive BRUH");
+    return _n_queens(board, size, 0);
 }
 
-void print_board(char board[BOARD_SIZE][BOARD_SIZE])
+void print_board(char* board, unsigned int size)
 {
-    for(unsigned int i = 0;i < BOARD_SIZE;++i)
+    for(unsigned int i = 0;i < size;++i)
     {
-        for(unsigned int j = 0;j < BOARD_SIZE;++j)
+        for(unsigned int j = 0;j < size;++j)
         {
-            std::cout << board[i][j] << " ";
+            std::cout << board[i * size + j] << " ";
         }
         std::cout << "\n";
     }
 }
-#endif
