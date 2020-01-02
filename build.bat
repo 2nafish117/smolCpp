@@ -55,3 +55,10 @@ if NOT exist .\NQueens\NQueens.exe (
     g++ .\NQueens\main.cpp -std=c++11 -o .\NQueens\NQueens
     ECHO .\NQueens\NQueens
 )
+
+g++ .\InterpolationSearch\main.cpp -std=c++11 -o .\InterpolationSearch\InterpolationSearch
+
+if NOT exist .\InterpolationSearch\InterpolationSearch.exe (
+    g++ .\InterpolationSearch\main.cpp -std=c++11 -o .\InterpolationSearch\InterpolationSearch
+    ECHO .\InterpolationSearch\InterpolationSearch
+)
